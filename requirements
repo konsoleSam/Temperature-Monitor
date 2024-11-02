@@ -1,0 +1,5 @@
+pyOpenSSL
+Flask
+waitress
+Flask-SQLAlchemy
+cx-Freeze

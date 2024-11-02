@@ -1,0 +1,70 @@
+{%extends "base.html" %}
+{% block content %}
+  <div class="container">
+    <h1 class="display-6">View</h1>
+    <p class="lead">Search data</p>
+    <form action="" method="POST">
+      <table class="table table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th>Location</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Submit</th>
+          </tr>
+        </thead>
+        <thead class="thead-dark">
+          <tr>
+            <th>
+            </th>
+            <th>
+              <input id="start-date" name="start-date" class="form-control" type="date" />
+            </th>
+            <th>
+              <input id="end-date" name="end-date" class="form-control" type="date" />
+            </th>
+            <th>
+              <input type="submit" class="btn btn-primary" value="Submit">
+            </th>
+          </tr>
+        </thead>
+      </table>
+    </form>
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th>
+            Date
+          </th>
+          <th>
+            Location
+          </th>
+          <th>
+            Temperature
+          </th>
+          <th>
+            Humidity
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in data%}
+          <tr>
+            <td>
+              {{ row.created }}
+            </td>
+            <td>
+              {{ row.location }}
+            </td>
+            <td>
+              {{ round(row.temperature,2) }}°C
+            </td>
+            <td>
+              {{ round(row.humidity,2) }}%
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

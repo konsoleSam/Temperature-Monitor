@@ -1,0 +1,33 @@
+.section {
+  padding: 3rem 0rem 1rem 0rem;
+  text-align: center;
+}
+
+.password {
+  max-width: 512px;
+  margin: 0 auto;
+  float: none;
+}
+
+.value-multiplier {
+  margin-bottom: .5rem;
+  /* color: #ce1d1d; */
+}
+.value-description {
+  opacity: .8;
+  font-weight: 300;
+}
+
+.one-third.column { width: 30.6666666667%; }
+
+.one-half.column { width: 48%; }
+
+@keyframes flash {
+  from, to { color: #ff0000;}
+  100% { color: #000000;}
+}
+.flash {
+  color: #000000;
+  animation:flash 5s infinite;
+  animation-iteration-count: 1;
+}

@@ -1,0 +1,47 @@
+{%extends "base.html" %}
+{% block content %}
+  <div class="container">
+    <h1 class="display-6">Live</h1>
+    <p class="lead flash" id="title">Data is updated every 10 seconds.</p>
+    <table class="table table-bordered" >
+      <thead class="thead-dark">
+        <tr>
+          <th>Temperature</th>
+          <th>humidity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <span id="temperature" class="flash">{{ temperature }}</span>°C
+          </td>
+          <td>
+            <span id="humidity" class="flash">{{ humidity }}</span>%
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script>
+    function flash(id){
+      let me=document.getElementById(id);
+      me.style.webkitAnimation = 'none';
+      setTimeout(function() {
+          me.style.animation = '';
+      }, 10);
+    };
+    function update(){
+        fetch("/data").then(function(response) {
+        return response.json()}).then(function(response){
+            document.getElementById("temperature").innerText=response.temperature;
+            document.getElementById("humidity").innerText=response.humidity;
+            flash("temperature");
+            flash("humidity");
+            flash("title");
+        })
+        setTimeout(update, 10000);
+    }
+    update()
+  
+  </script>
+{% endblock %}
